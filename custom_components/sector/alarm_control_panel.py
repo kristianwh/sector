@@ -4,15 +4,10 @@ from __future__ import annotations
 from homeassistant.components.alarm_control_panel import (
     AlarmControlPanelEntity,
     AlarmControlPanelEntityFeature,
+    AlarmControlPanelState,
     CodeFormat,
 )
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import (
-    STATE_ALARM_ARMED_AWAY,
-    STATE_ALARM_ARMED_HOME,
-    STATE_ALARM_DISARMED,
-    STATE_ALARM_PENDING,
-)
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.device_registry import DeviceInfo
@@ -23,10 +18,10 @@ from .const import DOMAIN
 from .coordinator import SectorDataUpdateCoordinator
 
 ALARM_STATE_TO_HA_STATE = {
-    3: STATE_ALARM_ARMED_AWAY,
-    2: STATE_ALARM_ARMED_HOME,
-    1: STATE_ALARM_DISARMED,
-    0: STATE_ALARM_PENDING,
+    3: AlarmControlPanelState.ARMED_AWAY,
+    2: AlarmControlPanelState.ARMED_HOME,
+    1: AlarmControlPanelState.DISARMED,
+    0: AlarmControlPanelState.PENDING,
 }
 
 
