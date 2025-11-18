@@ -84,7 +84,7 @@ class SectorAlarmPanel(
             await self.coordinator.triggeralarm(
                 command, code=code, panel_id=self._panel_id
             )
-            self._attr_state = STATE_ALARM_ARMED_HOME
+            self._attr_state = AlarmControlPanelState.ARMED_HOME
             if self.coordinator.logname:
                 self._attr_changed_by = self.coordinator.logname
             self.async_write_ha_state()
@@ -98,7 +98,7 @@ class SectorAlarmPanel(
             await self.coordinator.triggeralarm(
                 command, code=code, panel_id=self._panel_id
             )
-            self._attr_state = STATE_ALARM_DISARMED
+            self._attr_state = AlarmControlPanelState.DISARMED
             if self.coordinator.logname:
                 self._attr_changed_by = self.coordinator.logname
             self.async_write_ha_state()
@@ -112,7 +112,7 @@ class SectorAlarmPanel(
             await self.coordinator.triggeralarm(
                 command, code=code, panel_id=self._panel_id
             )
-            self._attr_state = STATE_ALARM_ARMED_AWAY
+            self._attr_state = AlarmControlPanelState.ARMED_AWAY
             if self.coordinator.logname:
                 self._attr_changed_by = self.coordinator.logname
             self.async_write_ha_state()
