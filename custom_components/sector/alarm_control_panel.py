@@ -71,6 +71,13 @@ class SectorAlarmPanel(
         )
 
     @property
+    def alarm_state(self) -> AlarmControlPanelState | None:
+        """Return the state of the device."""
+        status = self.coordinator.data[self._panel_id]["alarmstatus"]
+        # Map status code to the appropriate Home Assistant state
+        return ALARM_STATE_TO_HA_STATE.get(status)
+
+    @property
     def extra_state_attributes(self) -> dict:
         """Additional states for alarm panel."""
         return {
